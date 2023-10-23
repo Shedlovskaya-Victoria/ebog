@@ -1,0 +1,35 @@
+{% extends "blog.twig" %}
+
+{% block cardList %}
+    {% for arr in articles %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="single-blog">
+            <div class="single-blog-img">
+                <a href="blog-details.html">
+                    <img src="{{ arr.image }}" alt="image">
+                </a>
+            </div>
+            <div class="blog-meta">
+                    <span class="comments-type">
+                      <i class="bi bi-chat"></i>
+                      <a href="#">10 comments</a>
+                    </span>
+                <span  class="date-type">
+                      <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
+                    </span>
+            </div>
+            <div class="blog-text">
+                <h4>
+                    <a href="#">{{ arr.title }}</a>
+                </h4>
+                <p>
+                    {{ arr.content }}
+                </p>
+            </div>
+            <span>
+                    <a href="article/{{ arr.id }}" class="ready-btn">Read more</a>
+                  </span>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
