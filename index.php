@@ -18,6 +18,8 @@ echo 'post';
 h::dd($_POST);
 Macaw::get('/', 'Ebog\FrontendController@i');
 Macaw::get('article/(:num)', 'Ebog\FrontendController@one');
+Macaw::get('/pdo', 'Ebog\FrontendController@pdoi');
+Macaw::get('pdo/(:num)', 'Ebog\FrontendController@pdoone');
 
 
 /// admin panel routs
