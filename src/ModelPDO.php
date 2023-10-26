@@ -38,10 +38,10 @@ class ModelPDO
     public function getArticlesByID($id)
     {
         $stmt = $this->pdo->prepare('SELECT * FROM Article WHERE id = :id' );
-        $stmt->execute(['id'=>$id]);
-      // $array = $stmt->execute(array(":id" => $id));
-      $row = $stmt->fetchAll();
-       //return $row['id'].'| '.$row['title'].'| '.$row['content']  ;
-        var_dump($row);
+     //   $stmt->execute(['id'=>$id]);
+       $stmt->execute(['id' => $id]);
+       $row = $stmt->fetch();
+       return $row['id'].'| '.$row['title'].'| '.$row['content']  ;
+       // var_dump($row);
     }
 }

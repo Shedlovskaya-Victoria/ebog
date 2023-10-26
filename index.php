@@ -16,10 +16,16 @@ echo 'get';
 h::dd($_GET);
 echo 'post';
 h::dd($_POST);
+//json
 Macaw::get('/', 'Ebog\FrontendController@i');
 Macaw::get('article/(:num)', 'Ebog\FrontendController@one');
-Macaw::get('/pdo', 'Ebog\FrontendController@pdoi');
-Macaw::get('pdo/(:num)', 'Ebog\FrontendController@pdoone');
+//pdo
+Macaw::get('/pdo', 'Ebog\PDOFrontentControler@pdoi');
+Macaw::get('pdo/(:num)', 'Ebog\PDOFrontentControler@pdoone');
+//opis
+Macaw::get('/opis','Ebog\OpisFrontendController@iopis');
+Macaw::get('opis/(:num)','Ebog\OpisFrontendController@oneopis');
+
 
 
 /// admin panel routs
