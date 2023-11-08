@@ -56,11 +56,11 @@ h::dd($_POST);
 
 use FastRoute\Dispatcher;
 use PhpBench\Attributes as Bench;
-
+$container = require __DIR__ . '/app/container.php';
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/admin', ['Ebog\FrontendController','index']);
+    $r->addRoute('GET', '/q', ['Ebog\FrontendController','i']);
     // {id} must be a number (\d+)
-    $r->addRoute('GET', '/user/{id:\d+}', 'get_user_handler');
+    $r->addRoute('GET', '/', ['Ebog\BackendController','index']);
     // The /{title} suffix is optional
     $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
 });
@@ -85,8 +85,12 @@ switch ($routeInfo[0]) {
         // ... 405 Method Not Allowed
         break;
     case FastRoute\Dispatcher::FOUND:
-        $handler = $routeInfo[1];
-        $vars = $routeInfo[2];
-        // ... call $handler with $vars
+        $controller = $routeInfo[1];
+        $parameters = $routeInfo[2];
+
+        // We could do $container->get($controller) but $container->call()
+        // does that automatically
+        $container->call($controller, $parameters);
         break;
+
 }

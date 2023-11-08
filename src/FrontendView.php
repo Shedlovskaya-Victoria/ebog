@@ -8,10 +8,10 @@ class FrontendView
     private $twig;
     private $loader;
 
-    public function __construct()
+    public function __construct($loader, $twig)
     {
-        $this->loader = new \Twig\Loader\FilesystemLoader('template/frontend');
-        $this->twig = new \Twig\Environment($this->loader, []);
+        $this->loader = $loader;
+        $this->twig = $twig;
     }
 
     public function showBlog($articles)
