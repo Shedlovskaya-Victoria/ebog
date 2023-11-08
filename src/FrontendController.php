@@ -14,14 +14,14 @@ class FrontendController
     private \Ebog\Model $model;
 
 
-    public function __construct()
+    public function __construct(FrontendView $view, $model)
     {
-        $this->model = new \Ebog\Model();
-        $this->view = new \Ebog\FrontendView();
+        $this->model = $model;
+        $this->view = $view;
 
     }
 
-    public function i()
+    public function index()
     {
         $articles = $this->model->getArticles();
         $this->view->showBlog($articles);

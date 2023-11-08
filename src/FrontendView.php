@@ -8,9 +8,9 @@ class FrontendView
     private $twig;
     private $loader;
 
-    public function __construct($loader, $twig)
+    public function __construct($twig)
     {
-        $this->loader = $loader;
+       // $this->loader = $loader;
         $this->twig = $twig;
     }
 

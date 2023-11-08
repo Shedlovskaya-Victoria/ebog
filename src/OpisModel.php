@@ -2,26 +2,11 @@
 
 
 namespace Ebog;
-use PDO;
-use Opis\Database\Database;
-use Opis\Database\Connection;
 class OpisModel
 {
-
     private $db;
-    public function __construct(){
-        $connection = new Connection(
-            'mysql:host=localhost;dbname=1135_Shed',
-            'admin',
-            'admin');
-        $connection->options([
-            PDO::FETCH_ASSOC=>true,
-            PDO::ATTR_STRINGIFY_FETCHES=> false
-        ]);
-       // $this->connection->option(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-      //  $this->connection->option(PDO::ATTR_STRINGIFY_FETCHES, false);
-
-       $this->db = new Database($connection);
+    public function __construct($opisDatabase){
+       $this->db = $opisDatabase;
     }
     public function getAll()
     {

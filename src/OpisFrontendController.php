@@ -3,13 +3,13 @@
 
 namespace Ebog;
 
-use Ebog\OpisModel;
+
 class OpisFrontendController
 {
     private $opismodel;
-    public function __construct()
+    public function __construct($opisModel)
     {
-        $this->opismodel = new namespace\OpisModel();
+        $this->opismodel = $opisModel;
     }
     public function iopis()
     {

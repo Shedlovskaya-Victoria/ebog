@@ -27,42 +27,46 @@ echo 'get';
 h::dd($_GET);
 echo 'post';
 h::dd($_POST);
-//json
-//Macaw::get('/', 'Ebog\FrontendController@i');
-//Macaw::get('article/(:num)', 'Ebog\FrontendController@one');
-////pdo
-//Macaw::get('/pdo', 'Ebog\PDOFrontentControler@pdoi');
-//Macaw::get('pdo/(:num)', 'Ebog\PDOFrontentControler@pdoone');
-////opis
-//Macaw::get('/opis','Ebog\OpisFrontendController@iopis');
-//Macaw::get('opis/(:num)','Ebog\OpisFrontendController@oneopis');
-//
-//
-//
-///// admin panel routs
-//
-//Macaw::get('/admin', 'Ebog\BackendController@index');
-//Macaw::post('/admin', 'Ebog\BackendController@index');
-//Macaw::get('/admin/logout', 'Ebog\BackendController@logout');
-//Macaw::get('admin/edit/(:num)', 'Ebog\BackendController@edit');
-//Macaw::get('/admin/delete/(:num)', 'Ebog\BackendController@delete');
-//Macaw::post('/admin/update', 'Ebog\BackendController@update');
-//
-////Macaw::get('/admin/save/(:num)','Ebog\BackendController@save');
-//
-////Macaw::error($view->showError());
-//
-//Macaw::dispatch();
+/* json
+Macaw::get('/', 'Ebog\FrontendController@i');
+Macaw::get('article/(:num)', 'Ebog\FrontendController@one');
+//pdo
+Macaw::get('/pdo', 'Ebog\PDOFrontentControler@pdoi');
+Macaw::get('pdo/(:num)', 'Ebog\PDOFrontentControler@pdoone');
+//opis
+Macaw::get('/opis','Ebog\OpisFrontendController@iopis');
+Macaw::get('opis/(:num)','Ebog\OpisFrontendController@oneopis');
+
+
+
+/// admin panel routs
+
+Macaw::get('/admin', 'Ebog\BackendController@index');
+Macaw::post('/admin', 'Ebog\BackendController@index');
+Macaw::get('/admin/logout', 'Ebog\BackendController@logout');
+Macaw::get('admin/edit/(:num)', 'Ebog\BackendController@edit');
+Macaw::get('/admin/delete/(:num)', 'Ebog\BackendController@delete');
+Macaw::post('/admin/update', 'Ebog\BackendController@update');
+
+//Macaw::get('/admin/save/(:num)','Ebog\BackendController@save');
+
+//Macaw::error($view->showError());
+
+Macaw::dispatch();*/
 
 use FastRoute\Dispatcher;
 use PhpBench\Attributes as Bench;
+//
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 $container = require __DIR__ . '/app/container.php';
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/q', ['Ebog\FrontendController','i']);
+    $r->addRoute('GET', '/', ['Ebog\FrontendController','index']);
     // {id} must be a number (\d+)
-    $r->addRoute('GET', '/', ['Ebog\BackendController','index']);
+    $r->addRoute('GET', '/admin', ['Ebog\BackendController','index']);
     // The /{title} suffix is optional
-    $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
+    $r->addRoute('GET', '/opis', ['Ebog\OpisFrontendController','iopis']);
 });
 
 // Fetch method and URI from somewhere
