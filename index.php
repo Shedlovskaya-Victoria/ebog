@@ -37,8 +37,6 @@ Macaw::get('pdo/(:num)', 'Ebog\PDOFrontentControler@pdoone');
 Macaw::get('/opis','Ebog\OpisFrontendController@iopis');
 Macaw::get('opis/(:num)','Ebog\OpisFrontendController@oneopis');
 
-
-
 /// admin panel routs
 
 Macaw::get('/admin', 'Ebog\BackendController@index');
@@ -62,11 +60,23 @@ $dotenv->load();
 
 $container = require __DIR__ . '/app/container.php';
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+    //json
     $r->addRoute('GET', '/', ['Ebog\FrontendController','index']);
-    // {id} must be a number (\d+)
-    $r->addRoute('GET', '/admin', ['Ebog\BackendController','index']);
-    // The /{title} suffix is optional
+    $r->addRoute('GET', '/article/{id}', ['Ebog\FrontendController','one']);
+    //pdo
+    $r->addRoute('GET', '/pdo', ['Ebog\PDOFrontentControler','pdoi']);
+    $r->addRoute('GET', '/pdo/{id}', ['Ebog\PDOFrontentControler','pdoone']);
+    //opis
     $r->addRoute('GET', '/opis', ['Ebog\OpisFrontendController','iopis']);
+    $r->addRoute('GET', '/opis/{id}', ['Ebog\OpisFrontendController','oneopis']);
+    /// admin panel routs
+    $r->addRoute('GET', '/admin', ['Ebog\BackendController','index']);
+    $r->addRoute('POST', '/admin', ['Ebog\BackendController','index']);
+    $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController','logout']);
+    $r->addRoute('GET', '/admin/edit/(:num)', ['Ebog\BackendController','edit']);
+    $r->addRoute('GET', '/admin/delete/(:num)', ['Ebog\BackendController','delete']);
+    $r->addRoute('GET', '/admin/update', ['Ebog\BackendController','update']);
+    $r->addRoute('GET', '/admin/save/(:num)', ['Ebog\BackendController','save']);
 });
 
 // Fetch method and URI from somewhere
@@ -96,5 +106,4 @@ switch ($routeInfo[0]) {
         // does that automatically
         $container->call($controller, $parameters);
         break;
-
 }

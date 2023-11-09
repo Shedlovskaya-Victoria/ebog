@@ -11,16 +11,14 @@ class BackendController
 {
     private  $view;
     private $model;
-    public  function  __construct()
+    public  function  __construct($model, $view)
     {
-        $this->model = new \Ebog\Model();
-        $this->view = new \Ebog\BackendView();
+        $this->model = $model;
+        $this->view = $view;
 
         if (!isset($_SESSION['user'])) {
             $this->auth();
         }
-
-
     }
     public  function update()
     {

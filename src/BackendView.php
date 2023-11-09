@@ -8,10 +8,10 @@ class BackendView
     private $twig;
     private $loader;
 
-    public function __construct()
+    public function __construct($twig)
     {
-       $this->loader = new \Twig\Loader\FilesystemLoader('template/backend');
-       $this->twig = new \Twig\Environment($this->loader, []);
+       //$this->loader = new $twig;
+       $this->twig = $twig;
 
     }
 

@@ -3,15 +3,14 @@
 
 namespace Ebog;
 
-use \Ebog\ModelPDO;
 use Ebog\Helper as h;
 
 class PDOFrontentControler
 {
     private \Ebog\ModelPDO $pdomodel;
-    public  function __construct()
+    public  function __construct($pdomodel)
     {
-        $this->pdomodel = new \Ebog\ModelPDO();
+        $this->pdomodel = $pdomodel;
     }
     public  function pdoi()
     {
