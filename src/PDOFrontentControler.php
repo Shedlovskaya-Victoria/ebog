@@ -15,6 +15,7 @@ class PDOFrontentControler
     public  function pdoi()
     {
         echo h::dd($this->pdomodel->getArticles());
+
     }
     public function pdoone($id)
     {

@@ -3,31 +3,34 @@ session_start();
 require_once 'vendor/autoload.php';
 use Ebog\Helper as h;
 
-//роутер macaw
-//use NoahBuscher\Macaw\Macaw;
-
 //дебагер tracy
-//use Tracy\Debugger;
-//Debugger::enable();
-
+/*
+use Tracy\Debugger;
+Debugger::enable();
+*/
 //новый дебагер whoops
 use Ebog\WhoopsExeption;
-$debug = new WhoopsExeption();
+$debug = new WhoopsExeption(new \Whoops\Run);
 $debug->exeption();
 //ошибка для проверки работы whoops
 //throw new RuntimeException("Oh fudge napkins!");
-
-//unset ($_SESSION['user']);
-//unset($_POST);
-//unset($_GET);
-
+/*
+unset ($_SESSION['user']);
+unset($_POST);
+unset($_GET);
+*/
+/*
 echo 'session';
 h::dd($_SESSION);
 echo 'get';
 h::dd($_GET);
 echo 'post';
 h::dd($_POST);
-/* json
+*/
+//роутер macaw
+/*
+use NoahBuscher\Macaw\Macaw;
+//json
 Macaw::get('/', 'Ebog\FrontendController@i');
 Macaw::get('article/(:num)', 'Ebog\FrontendController@one');
 //pdo
@@ -50,15 +53,21 @@ Macaw::post('/admin/update', 'Ebog\BackendController@update');
 
 //Macaw::error($view->showError());
 
-Macaw::dispatch();*/
+Macaw::dispatch();
+*/
 
-use FastRoute\Dispatcher;
-use PhpBench\Attributes as Bench;
-//
+// скрытый глобальный массив ENV
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+//новый роутер
+use FastRoute\Dispatcher;
+use PhpBench\Attributes as Bench;
+
 $container = require __DIR__ . '/app/container.php';
+//$userNews = $container->get('FrontContrl');
+//$userNews->create();
+
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     //json
     $r->addRoute('GET', '/', ['Ebog\FrontendController','index']);

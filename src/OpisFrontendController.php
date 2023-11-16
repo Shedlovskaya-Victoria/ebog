@@ -14,6 +14,12 @@ class OpisFrontendController
     public function iopis()
     {
        echo $this->opismodel->getAll();
+       echo '<br/>';  echo '<br/>';
+
+        $this->opismodel->addJohnDoe();
+
+        echo '<br/>';  echo '<br/>';
+        echo $this->opismodel->getAll();
     }
     public function oneopis($id)
     {

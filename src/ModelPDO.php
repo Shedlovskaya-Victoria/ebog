@@ -29,4 +29,5 @@ class ModelPDO
        return $row['id'].'| '.$row['title'].'| '.$row['content']  ;
        // var_dump($row);
     }
+
 }

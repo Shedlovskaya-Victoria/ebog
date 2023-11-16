@@ -24,4 +24,15 @@ class OpisModel
         echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
     }
 
+    public  function addJohnDoe()
+    {
+        //add
+        $result = $this->db->insert(array(
+            'title' => 'John Doe',
+            'image'=>'',
+            'content' => 'john.doe@example.com'
+        ))
+            ->into('Article');
+    }
+
 }

@@ -3,16 +3,16 @@
 
 namespace Ebog;
 
-use RuntimeException;
+//use RuntimeException;
 use Whoops\Handler\JsonResponseHandler;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run;
+//use Whoops\Handler\PrettyPageHandler;
+//use Whoops\Run;
  class WhoopsExeption
 {
     private $whoops;
-    public function  __construct()
+    public function  __construct($whoops)
     {
-        $this->whoops = new \Whoops\Run;
+        $this->whoops = $whoops;
     }
 
     public function exeption()
