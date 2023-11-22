@@ -82,10 +82,11 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/admin', ['Ebog\BackendController','index']);
     $r->addRoute('POST', '/admin', ['Ebog\BackendController','index']);
     $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController','logout']);
-    $r->addRoute('GET', '/admin/edit/(:num)', ['Ebog\BackendController','edit']);
-    $r->addRoute('GET', '/admin/delete/(:num)', ['Ebog\BackendController','delete']);
+    $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController','edit']);
+    $r->addRoute('GET', '/admin/add', ['Ebog\BackendController','add']);
+    $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController','delete']);
     $r->addRoute('GET', '/admin/update', ['Ebog\BackendController','update']);
-    $r->addRoute('GET', '/admin/save/(:num)', ['Ebog\BackendController','save']);
+    $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController','save']);
 });
 
 // Fetch method and URI from somewhere
@@ -101,7 +102,7 @@ $uri = rawurldecode($uri);
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
-        // ... 404 Not Found
+        // show error 404
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];

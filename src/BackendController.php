@@ -20,14 +20,15 @@ class BackendController
             $this->auth();
         }
     }
-    public  function update()
+    public function update()
     {
-        if(isset($_POST['btnOk']))
-        { //unset($_POST['btnOk']);
+        //if(isset($_POST['btnOk']))
+        //{ //unset($_POST['btnOk']);
             $arrs = $this->model->getArticles();
-            if(isset($_POST['idEdit']))
+            if(!empty($arrs[$_POST['idEdit']]))
             {
                 $arrs[$_POST['idEdit']]['title'] = $_POST['inputTitle'];
+
                 $arrs[$_POST['idEdit']]['content'] = $_POST['inputContent'];
                 //unset($_GET['idEdit']);
             }
@@ -40,7 +41,7 @@ class BackendController
                 array_push($arrs, $arr2);
             }
             file_put_contents('asd.json', json_encode($arrs));
-        }
+       // }
         h::goUrl('/admin');
     }
     public function delete($id)
@@ -98,6 +99,20 @@ class BackendController
     {
         $article = $this->model->getArticleByID($id);
         $this->view->showEdit($article);
+    }
+    public function add()
+    {
+        $article = array();
+        $this->view->showEdit($article);
+    }
+    public function save($id)
+    {
+        $arrs = $this->model->getArticles();
+
+        $arrs[$_POST['idEdit']]['title'] = $_POST['inputTitle'];
+        $arrs[$_POST['idEdit']]['content'] = $_POST['inputContent'];
+
+        file_put_contents('asd.json', json_encode($arrs));
     }
 
 }

@@ -6,7 +6,7 @@ class FrontendView
 {
 
     private $twig;
-    private $loader;
+   // private $loader;
 
     public function __construct($twig)
     {
