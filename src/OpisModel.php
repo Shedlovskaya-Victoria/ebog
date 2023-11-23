@@ -2,6 +2,7 @@
 
 
 namespace Ebog;
+
 class OpisModel
 {
     private $db;
@@ -21,10 +22,17 @@ class OpisModel
     public function getByID($id)
     {
         $article = $this->db->from('Article')->where('id')->atLeast($id)->select()->fetchBoth()->first();
-        echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
+        return //Helper::dd(
+            (array('id' => $article['id'],
+            'title' => $article['title'],
+            'image' => $article['image'],
+            'content' => $article['content'])
+            // )
+    );
+        //echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
     }
 
-    public  function addJohnDoe()
+    public function addJohnDoe()
     {
         //add
         $result = $this->db->insert(array(
@@ -33,6 +41,22 @@ class OpisModel
             'content' => 'john.doe@example.com'
         ))
             ->into('Article');
+    }
+    public function deleteJohnDoe($id)
+    {
+        $result = $this->db->from('Article')
+            ->where('id')->is($id)
+            ->delete(array('Article'));
+    }
+    public  function updateJohnDoe($id, $arr = [])
+    {
+        $result = $this->db->update('Article')
+            ->where('id')->is($id)
+            ->set(array(
+                'title' => $arr['title'],
+                'image'=>'',
+                'content' => $arr['content']
+            ));
     }
 
 }

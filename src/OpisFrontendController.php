@@ -20,6 +20,22 @@ class OpisFrontendController
 
         echo '<br/>';  echo '<br/>';
         echo $this->opismodel->getAll();
+
+        $this->opismodel->deleteJohnDoe(8);
+
+        echo '<br/>';  echo '<br/>';
+        echo $this->opismodel->getAll();
+
+        $arr = array(
+            'title' => 'New',
+            'image'=>'',
+            'content' => 'Туц Соте');
+
+        $this->opismodel->updateJohnDoe(12, $arr);
+
+        echo '<br/>';  echo '<br/>';
+        echo $this->opismodel->getAll();
+
     }
     public function oneopis($id)
     {
