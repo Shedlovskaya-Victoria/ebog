@@ -12,7 +12,6 @@ class BackendView
     {
        //$this->loader = new $twig;
        $this->twig = $twig;
-
     }
 
     public function showLogin(){
@@ -27,8 +26,8 @@ class BackendView
     public function showError(){
         echo $this->twig->render('error.twig', []);
     }
-    public  function  showBlogDetails(){
-        echo $this->twig->render('blog-detail-list.twig', ['article' => $this->article]);
+    public  function  showBlogDetails($articles){
+        echo $this->twig->render('blog-detail-list.twig', ['article' => $this->article, 'articles'=>$articles]);
     }
     public  function showEdit($article)
     {

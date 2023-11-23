@@ -85,7 +85,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController','edit']);
     $r->addRoute('GET', '/admin/add', ['Ebog\BackendController','add']);
     $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController','delete']);
-    $r->addRoute('GET', '/admin/update', ['Ebog\BackendController','update']);
+    $r->addRoute('POST', '/admin/update/{id}', ['Ebog\BackendController','update']);
     $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController','save']);
 });
 

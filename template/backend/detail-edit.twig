@@ -271,14 +271,13 @@
         </nav>
     </div><!-- End Page Title -->
     <section class="section">
-        <form method="post" action="/admin/update">
+        <form method="post" action="/admin/update/{{ article.id }}">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Title:</h5>
                     <input name="inputTitle" type="text" class="form-control" value="{{ article.title }}">
             </div>
         </div>
-
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Content: </h5>
@@ -289,7 +288,6 @@
                         <!-- End TinyMCE Editor -->
                     </div>
                 </div>
-
         <div class="d-grid gap-2 mt-3" style="margin: 5px">
             <input type="hidden" class="form-control" name="idEdit" value="'{{ article.id }}'">
             <input name="btnOk" type="submit" class="btn btn-primary" value="Ok">

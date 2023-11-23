@@ -29,3 +29,20 @@
     </div>
 </article>
 {% endblock %}
+
+{% block postBlock %}
+    <!-- start single post -->
+    {% for arr in articles %}
+    <div class="recent-single-post">
+        <div class="post-img">
+            <a href="/article/{{ arr.id }}">
+                <img src="{{ arr.image }}" alt="">
+            </a>
+        </div>
+        <div class="pst-content">
+            <p><a href="/article/{{ arr.id }}"> {{ arr.title }}</a></p>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End single post -->
+{% endblock %}

@@ -12,7 +12,7 @@
             <div class="blog-meta">
                     <span class="comments-type">
                       <i class="bi bi-chat"></i>
-                      <a href="#">10 comments</a>
+                      <a href="#">comments</a>
                     </span>
                 <span  class="date-type">
                       <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -32,4 +32,22 @@
         </div>
     </div>
     {% endfor %}
+{% endblock %}
+
+
+{% block postBlock %}
+    <!-- start single post -->
+    {% for arr in articles %}
+        <div class="recent-single-post">
+            <div class="post-img">
+                <a href="/article/{{ arr.id }}">
+                    <img src="{{ arr.image }}" alt="">
+                </a>
+            </div>
+            <div class="pst-content">
+                <p><a href="/article/{{ arr.id }}"> {{ arr.title }}</a></p>
+            </div>
+        </div>
+    {% endfor %}
+    <!-- End single post -->
 {% endblock %}

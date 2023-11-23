@@ -20,21 +20,20 @@ class BackendController
             $this->auth();
         }
     }
-    public function update()
+    public function update($id)
     {
         //if(isset($_POST['btnOk']))
         //{ //unset($_POST['btnOk']);
             $arrs = $this->model->getArticles();
-            if(!empty($arrs[$_POST['idEdit']]))
+            if($id!=0)
             {
-                $arrs[$_POST['idEdit']]['title'] = $_POST['inputTitle'];
-
-                $arrs[$_POST['idEdit']]['content'] = $_POST['inputContent'];
+                $arrs[$id]['title'] = $_POST['inputTitle'];
+                $arrs[$id]['content'] = $_POST['inputContent'];
                 //unset($_GET['idEdit']);
             }
             else{
-                $id = end($arrs);
-                $arr2 = array('id' => ++$id['id'],
+                $idNew = end($arrs);
+                $arr2 = array('id' => ++$idNew['id'],
                     'title' => $_POST['inputTitle'],
                     'image' => '',
                     'content' => $_POST['inputContent']);
@@ -63,12 +62,16 @@ class BackendController
             exit;
         } else {
             if ($this->checkLogin($_POST['login'], $_POST['password'])) {
-                $_SESSION['user'] = 'admin';
-                //echo 'Вы залогинелись';
+                $_SESSION['user'] = 'admin';  //echo 'Вы залогинелись';
                 h::goUrl('/admin');
-            } else {
-                h::goUrl('/admin');
-            };
+            }else //if ($this->checkLogin($_POST['login'], $_POST['password'])) {
+            {
+                $_SESSION['user'] = 'user';  //echo 'Вы залогинелись';
+                h::goUrl('/');
+            }
+//            } else {
+//                h::goUrl('/');
+//            };
         }
     }
 
@@ -76,8 +79,13 @@ class BackendController
     {
         if ($login == 'admin' and $password == 'admin') {
             return true;
-        } else {
+        }
+else if ($login == 'user' and $password == 'user') {
             return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
@@ -102,7 +110,10 @@ class BackendController
     }
     public function add()
     {
-        $article = array();
+        $article = array('id' => 0,
+            'title' => '',
+            'image' => '',
+            'content' => '');
         $this->view->showEdit($article);
     }
     public function save($id)

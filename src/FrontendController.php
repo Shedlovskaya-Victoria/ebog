@@ -18,7 +18,6 @@ class FrontendController
     {
         $this->model = $model;
         $this->view = $view;
-
     }
 
     public function index()
@@ -30,7 +29,8 @@ class FrontendController
     public function one($id)
     {
         $article = $this->model->getArticleByID($id);
-        $this->view->showBlogDetails($article);
+        $articles = $this->model->getArticles();
+        $this->view->showBlogDetails($article, $articles);
     }
 
 

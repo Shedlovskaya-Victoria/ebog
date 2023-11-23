@@ -43,37 +43,16 @@
     <div class="container d-flex justify-content-between">
 
         <div class="logo">
-            <h1><a href="index.html"><span>e</span>Business</a></h1>
+            <h1><a href="/"><span>e</span>Business</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="/template/frontend/assetsBlog/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                <li><a class="active" href="blog.html">Blog</a></li>
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li><a class="nav-link scrollto " href="/">Home</a></li>
+
+                <li><a class="nav-link scrollto" href="/admin/logout">Exit</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -127,139 +106,11 @@
                                 <h4>recent post</h4>
                                 <div class="recent-post">
                                     <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="/template/frontend/assetsBlog/img/blog/1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> Redug Lerse dolor sit amet consect adipis elit.</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End single post -->
-                                    <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="/template/frontend/assetsBlog/img/blog/2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> Redug Lerse dolor sit amet consect adipis elit.</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End single post -->
-                                    <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="/template/frontend/assetsBlog/img/blog/3.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> Redug Lerse dolor sit amet consect adipis elit.</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End single post -->
-                                    <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="/template/frontend/assetsBlog/img/blog/4.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> Redug Lerse dolor sit amet consect adipis elit.</a></p>
-                                        </div>
-                                    </div>
+                                    {% block postBlock %}{% endblock %}
                                     <!-- End single post -->
                                 </div>
                             </div>
                             <!-- recent end -->
-                        </div>
-                        <div class="single-blog-page">
-                            <div class="left-blog">
-                                <h4>categories</h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">Portfolio</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Project</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">wordpress</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Joomla</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Html</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single-blog-page">
-                            <div class="left-blog">
-                                <h4>archive</h4>
-                                <ul>
-                                    <li>
-                                        <a href="#">07 July 2016</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">29 June 2016</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">13 May 2016</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">20 March 2016</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">09 Fabruary 2016</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single-blog-page">
-                            <div class="left-tags blog-tags">
-                                <div class="popular-tag left-side-tags left-blog">
-                                    <h4>popular tags</h4>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Portfolio</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Project</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Design</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">wordpress</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Joomla</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Html</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Masonry</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Website</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,58 +125,27 @@
                             <div class="single-post-comments">
                                 <div class="comments-area">
                                     <div class="comments-heading">
-                                        <h3>6 comments</h3>
+                                        <h3>comments</h3>
                                     </div>
                                     <div class="comments-list">
                                         <ul>
-                                            <li class="threaded-comments">
-                                                <div class="comments-details">
-                                                    <div class="comments-list-img">
-                                                        <img src="/template/frontend/assetsBlog/img/blog/b02.jpg" alt="post-author">
-                                                    </div>
-                                                    <div class="comments-content-wrap">
-                              <span>
-                                <b><a href="#">demo</a></b>
-                                Post author
-                                <span class="post-time">October 6, 2014 at 4:25 pm</span>
-                                <a href="#">Reply</a>
-                              </span>
-                                                        <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="comments-details">
-                                                    <div class="comments-list-img">
-                                                        <img src="/template/frontend/assetsBlog/img/blog/b02.jpg" alt="post-author">
-                                                    </div>
-                                                    <div class="comments-content-wrap">
-                              <span>
-                                <b><a href="#">admin</a></b>
-                                Post author
-                                <span class="post-time">October 6, 2014 at 6:18 pm </span>
-                                <a href="#">Reply</a>
-                              </span>
-                                                        <p>Quisque orci nibh, porta vitae sagittis sit amet, vehicula vel mauris. Aenean at justo dolor. Fusce ac sapien bibendum, scelerisque libero nec</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="threaded-comments">
-                                                <div class="comments-details">
-                                                    <div class="comments-list-img">
-                                                        <img src="/template/frontend/assetsBlog/img/blog/b02.jpg" alt="post-author">
-                                                    </div>
-                                                    <div class="comments-content-wrap">
-                              <span>
-                                <b><a href="#">demo</a></b>
-                                Post author
-                                <span class="post-time">October 6, 2014 at 7:25 pm</span>
-                                <a href="#">Reply</a>
-                              </span>
-                                                        <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            <li>#Планируется в следующей версии</li>
+{#                                            <li class="threaded-comments">#}
+{#                                                <div class="comments-details">#}
+{#                                                    <div class="comments-list-img">#}
+{#                                                        <img src="/template/frontend/assetsBlog/img/blog/b02.jpg" alt="post-author">#}
+{#                                                    </div>#}
+{#                                                    <div class="comments-content-wrap">#}
+{#                              <span>#}
+{#                                <b><a href="#">demo</a></b>#}
+{#                                Post author#}
+{#                                <span class="post-time">October 6, 2014 at 7:25 pm</span>#}
+{#                                <a href="#">Reply</a>#}
+{#                              </span>#}
+{#                                                        <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </li>#}
                                         </ul>
                                     </div>
                                 </div>

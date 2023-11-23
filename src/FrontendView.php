@@ -24,8 +24,8 @@ class FrontendView
         echo $this->twig->render('error.twig', []);
     }
 
-    public function showBlogDetails($article)
+    public function showBlogDetails($article, $articles)
     {
-        echo $this->twig->render('blog-detail-list.twig', ['article' => $article]);
+        echo $this->twig->render('blog-detail-list.twig', ['article' => $article, 'articles'=>$articles]);
     }
 }
