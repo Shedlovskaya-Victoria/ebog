@@ -15,9 +15,11 @@ class OpisModel
         foreach ($result as $res){
           echo $res['id'].'| '.$res['title'].'| '.$res['content'].'| <br/>';
         }
-       // foreach ($result as $r){
-         //   echo $r['id'].'| '.$r['title'].'| '.$r['content'].'.';
-       // }
+        /*
+        foreach ($result as $r){
+            echo $r['id'].'| '.$r['title'].'| '.$r['content'].'.';
+        }
+        */
     }
     public function getByID($id)
     {
@@ -28,10 +30,9 @@ class OpisModel
             'image' => $article['image'],
             'content' => $article['content'])
             // )
-    );
-        //echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
+    );//echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
     }
-
+/*тестовый CRUD JohnDoe
     public function addJohnDoe()
     {
         //add
@@ -58,5 +59,31 @@ class OpisModel
                 'content' => $arr['content']
             ));
     }
-
+*/
+    public  function update($id)
+    {
+        $result = $this->db->update('Article')
+            ->where('id')->is($id)
+            ->set(array(
+                'title' => $_POST['inputTitle'],
+                'image'=>'',
+                'content' => $_POST['inputContent']
+            ));
+    }
+    public function delete($id)
+    {
+        $result = $this->db->from('Article')
+            ->where('id')->is($id)
+            ->delete(array('Article'));
+    }
+    public function add()
+    {
+        //add
+        $result = $this->db->insert(array(
+            'title' => $_POST['inputTitle'],
+            'image'=>'',
+            'content' => $_POST['inputContent']
+        ))
+            ->into('Article');
+    }
 }

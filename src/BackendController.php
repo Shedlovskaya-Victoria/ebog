@@ -27,11 +27,15 @@ class BackendController
             $arrs = $this->model->getArticles();
             if($id!=0)
             {
+                /*
+            }
                 $arrs[$id]['title'] = $_POST['inputTitle'];
                 $arrs[$id]['content'] = $_POST['inputContent'];
                 //unset($_GET['idEdit']);
+                */
             }
             else{
+                /*
                 $idNew = end($arrs);
                 $arr2 = array('id' => ++$idNew['id'],
                     'title' => $_POST['inputTitle'],
@@ -40,7 +44,9 @@ class BackendController
                 array_push($arrs, $arr2);
             }
             file_put_contents('asd.json', json_encode($arrs));
-       // }
+                 */
+        }
+
         h::goUrl('/admin');
     }
     public function delete($id)
