@@ -51,3 +51,9 @@
     {% endfor %}
     <!-- End single post -->
 {% endblock %}
+
+{% block pagination %}
+    {% for str in str_pag %}
+        <li class="page-item"><a href="/page/{{ str }}" class="page-link">{{ str }}</a></li>
+    {% endfor %}
+{% endblock %}

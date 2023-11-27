@@ -21,12 +21,13 @@ class BackendController
         }
     }
     public function update($id)
-    {
-        //if(isset($_POST['btnOk']))
-        //{ //unset($_POST['btnOk']);
-            $arrs = $this->model->getArticles();
+    {/*if(isset($_POST['btnOk']))
+     { //unset($_POST['btnOk']);*/
+        $arrs = $this->model->getAll();
+            //$arrs = $this->model->getArticles();
             if($id!=0)
             {
+                $this->model->update($id);
                 /*
             }
                 $arrs[$id]['title'] = $_POST['inputTitle'];
@@ -35,6 +36,7 @@ class BackendController
                 */
             }
             else{
+                $this->model->add();
                 /*
                 $idNew = end($arrs);
                 $arr2 = array('id' => ++$idNew['id'],
@@ -46,11 +48,12 @@ class BackendController
             file_put_contents('asd.json', json_encode($arrs));
                  */
         }
-
         h::goUrl('/admin');
     }
     public function delete($id)
     {
+        $this->model->delete($id);
+        /*
         if (isset($id)) {
             $arr = $this->model->getArticles();
             //dd($arr);
@@ -59,6 +62,8 @@ class BackendController
             file_put_contents('asd.json', json_encode($arr));
             h::goUrl('/admin');
         }
+        */
+        h::goUrl('/admin');
     }
 
     public function auth()
@@ -70,28 +75,25 @@ class BackendController
             if ($this->checkLogin($_POST['login'], $_POST['password'])) {
                 $_SESSION['user'] = 'admin';  //echo 'Вы залогинелись';
                 h::goUrl('/admin');
-            }else //if ($this->checkLogin($_POST['login'], $_POST['password'])) {
-            {
+            }else if ($this->checkLogin($_POST['login'], $_POST['password'])) {
                 $_SESSION['user'] = 'user';  //echo 'Вы залогинелись';
                 h::goUrl('/');
-            }
-//            } else {
-//                h::goUrl('/');
-//            };
+            } else {
+               h::goUrl('/');
+            };
         }
     }
 
-    public function checkLogin(string $login, string $password): bool
+    public function checkLogin(string $login, string $password)
     {
         if ($login == 'admin' and $password == 'admin') {
             return true;
-        }
-else if ($login == 'user' and $password == 'user') {
+        } else if ($login == 'user' and $password == 'user') {
             return false;
         }
         else
         {
-            return true;
+            h::goUrl('/admin');
         }
     }
 
@@ -106,7 +108,8 @@ else if ($login == 'user' and $password == 'user') {
     }
     public function index()
     {
-       $articles = $this->model->getArticles();
+        $articles = $this->model->getAll();
+      // $articles = $this->model->getArticles();
         $this->view->showAdmin($articles);
     }
     public function edit($id)
@@ -124,7 +127,7 @@ else if ($login == 'user' and $password == 'user') {
     }
     public function save($id)
     {
-        $arrs = $this->model->getArticles();
+        //$arrs = $this->model->getArticles();
 
         $arrs[$_POST['idEdit']]['title'] = $_POST['inputTitle'];
         $arrs[$_POST['idEdit']]['content'] = $_POST['inputContent'];

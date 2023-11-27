@@ -71,6 +71,7 @@ $container = require __DIR__ . '/app/container.php';
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     //json
     $r->addRoute('GET', '/', ['Ebog\FrontendController','index']);
+    $r->addRoute('GET', '/page/{currentPage:\d+}', ['Ebog\FrontendController','index']);
     $r->addRoute('GET', '/article/{id}', ['Ebog\FrontendController','one']);
     //pdo
     $r->addRoute('GET', '/pdo', ['Ebog\PDOFrontentControler','pdoi']);

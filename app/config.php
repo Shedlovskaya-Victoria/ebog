@@ -61,7 +61,7 @@ return [
 
     Ebog\BackendController:: class=>create(\Ebog\BackendController::class)
     ->constructor(
-        get('Model'),
+        get('OpisModel'),
         get('BackView')),
     Ebog\PDOFrontentControler::class=>create(Ebog\PDOFrontentControler::class)
     ->constructor(get('PDOModel')),
@@ -70,6 +70,6 @@ return [
    Ebog\FrontendController::class => create( Ebog\FrontendController::class)
     ->constructor(
        get('FrontView'),
-       get('Model')
+       get('OpisModel')
     )
 ];

@@ -11,19 +11,36 @@ class OpisModel
     }
     public function getAll()
     {
-        $result = $this->db->from('Article')->select()->fetchBoth()->all();
+        $article = $this->db->from('Article')->select()->fetchBoth()->all();
+        return $article;
+            /*
         foreach ($result as $res){
           echo $res['id'].'| '.$res['title'].'| '.$res['content'].'| <br/>';
-        }
+        }*/
         /*
         foreach ($result as $r){
             echo $r['id'].'| '.$r['title'].'| '.$r['content'].'.';
         }
         */
     }
-    public function getByID($id)
+    public  function getPaginationPage($limit, $art)
     {
-        $article = $this->db->from('Article')->where('id')->atLeast($id)->select()->fetchBoth()->first();
+        $article = $this->db->from('Article')->limit($art ,$limit)
+            ->select()
+            ->fetchBoth();
+        return $article;
+    }
+    public function countAllPages()
+    {
+        return $this->db->from('Article')->count();
+    }
+    public function getArticleByID($id)
+    {
+        $article = $this->db->from('Article')
+            ->where('id')
+            ->atLeast($id)
+            ->select()
+            ->fetchBoth()->first();
         return //Helper::dd(
             (array('id' => $article['id'],
             'title' => $article['title'],
@@ -62,13 +79,15 @@ class OpisModel
 */
     public  function update($id)
     {
-        $result = $this->db->update('Article')
-            ->where('id')->is($id)
-            ->set(array(
-                'title' => $_POST['inputTitle'],
-                'image'=>'',
-                'content' => $_POST['inputContent']
-            ));
+        if(isset($_POST['inputTitle']) & isset($_POST['inputContent'])) {
+            $result = $this->db->update('Article')
+                ->where('id')->is($id)
+                ->set(array(
+                    'title' => $_POST['inputTitle'],
+                    'image' => $_POST['inputImage'],
+                    'content' => $_POST['inputContent']
+                ));
+        }
     }
     public function delete($id)
     {
@@ -79,11 +98,13 @@ class OpisModel
     public function add()
     {
         //add
-        $result = $this->db->insert(array(
-            'title' => $_POST['inputTitle'],
-            'image'=>'',
-            'content' => $_POST['inputContent']
-        ))
-            ->into('Article');
+        if(isset($_POST['inputTitle']) & isset($_POST['inputContent'])) {
+            $result = $this->db->insert(array(
+                'title' => $_POST['inputTitle'],
+                'image' => $_POST['inputImage'],
+                'content' => $_POST['inputContent']
+            ))
+                ->into('Article');
+        }
     }
 }

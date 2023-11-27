@@ -14,9 +14,10 @@ class FrontendView
         $this->twig = $twig;
     }
 
-    public function showBlog($articles)
+    public function showBlog($articles, $str_pag)
     {
-        echo $this->twig->render('blog-card-list.twig', ['articles' => $articles]);
+        echo $this->twig->render('blog-card-list.twig',
+            ['articles' => $articles, 'str_pag'=>$str_pag]);
     }
 
     public function showError()
