@@ -23,11 +23,12 @@ class OpisModel
         }
         */
     }
-    public  function getPaginationPage($limit, $art)
+    public function getPaginationPage($limit, $art)
     {
-        $article = $this->db->from('Article')->limit($art ,$limit)
-            ->select()
-            ->fetchBoth();
+        $article = $this->db->from('Article')
+            ->limit($art)
+            ->offset($limit)
+            ->select()->all();
         return $article;
     }
     public function countAllPages()

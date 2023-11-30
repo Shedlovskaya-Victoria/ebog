@@ -38,20 +38,19 @@ class FrontendController
     */
 
         $kol = 3;  // количество записей для вывода
-        $art = ($currentPage * $kol) - $kol;
-       // echo $art;
+        $art = ($currentPage * $kol) - $kol;   // echo $art;
 
         $total = $this->model->countAllPages(); // всего записей
 
         // Количество страниц для пагинации
-        $str_pag = ceil($total / $kol);
+        $str_pag = ceil($total / $kol);    //$str_pag = 1;
        // echo $str_pag;
-
         /*$articles = $this->model->getArticles();
         */
-        $articles = $this->model->getPaginationPage($art, $str_pag);
 
-        $this->view->showBlog($articles, $str_pag);
+        $articles = $this->model->getPaginationPage($art,$kol);
+
+        $this->view->showBlog($articles, $currentPage);
     }
 
     public function one($id)
