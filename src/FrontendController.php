@@ -50,7 +50,7 @@ class FrontendController
 
         $articles = $this->model->getPaginationPage($art,$kol);
 
-        $this->view->showBlog($articles, $currentPage);
+        $this->view->showBlog($articles, $currentPage, $str_pag);
     }
 
     public function one($id)

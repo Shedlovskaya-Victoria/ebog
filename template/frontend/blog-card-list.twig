@@ -53,9 +53,9 @@
 {% endblock %}
 
 {% block pagination %}
-    <li class="page-item"><a href="/page/{{  str_pag -1 }}" class="page-link">&lt;</a></li>
-    {% for arr in articles %}
-        <li class="page-item"><a href="/page/{{  loop.index }}" class="page-link">{{  loop.index }}</a></li>
+    <li class="page-item"><a href="/page/{{  currentPage -1 }}" class="page-link">&lt;</a></li>
+    {% for i in 1 .. str_pag  %}
+        <li class="page-item"><a href="/page/{{  i }}" class="page-link">{{  i }}</a></li>
     {% endfor %}
-    <li class="page-item"><a href="/page/{{  str_pag +1  }}" class="page-link">&gt;</a></li>
+    <li class="page-item"><a href="/page/{{  currentPage +1  }}" class="page-link">&gt;</a></li>
 {% endblock %}
