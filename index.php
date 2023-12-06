@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'vendor/autoload.php';
+
 use Ebog\Helper as h;
 
 //дебагер tracy
@@ -8,8 +9,10 @@ use Ebog\Helper as h;
 use Tracy\Debugger;
 Debugger::enable();
 */
+
 //новый дебагер whoops
 use Ebog\WhoopsExeption;
+
 $debug = new WhoopsExeption(new \Whoops\Run);
 $debug->exeption();
 //ошибка для проверки работы whoops
@@ -68,26 +71,26 @@ $container = require __DIR__ . '/app/container.php';
 //$userNews = $container->get('FrontContrl');
 //$userNews->create();
 
-$dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+$dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     //json
-    $r->addRoute('GET', '/', ['Ebog\FrontendController','index']);
-    $r->addRoute('GET', '/page/{currentPage:\d+}', ['Ebog\FrontendController','index']);
-    $r->addRoute('GET', '/article/{id}', ['Ebog\FrontendController','one']);
+    $r->addRoute('GET', '/', ['Ebog\FrontendController', 'index']);
+    $r->addRoute('GET', '/page/{currentPage:\d+}', ['Ebog\FrontendController', 'index']);
+    $r->addRoute('GET', '/article/{id}', ['Ebog\FrontendController', 'one']);
     //pdo
-    $r->addRoute('GET', '/pdo', ['Ebog\PDOFrontentControler','pdoi']);
-    $r->addRoute('GET', '/pdo/{id}', ['Ebog\PDOFrontentControler','pdoone']);
+    $r->addRoute('GET', '/pdo', ['Ebog\PDOFrontentControler', 'pdoi']);
+    $r->addRoute('GET', '/pdo/{id}', ['Ebog\PDOFrontentControler', 'pdoone']);
     //opis
-    $r->addRoute('GET', '/opis', ['Ebog\OpisFrontendController','iopis']);
-    $r->addRoute('GET', '/opis/{id}', ['Ebog\OpisFrontendController','oneopis']);
+    $r->addRoute('GET', '/opis', ['Ebog\OpisFrontendController', 'iopis']);
+    $r->addRoute('GET', '/opis/{id}', ['Ebog\OpisFrontendController', 'oneopis']);
     /// admin panel routs
-    $r->addRoute('GET', '/admin', ['Ebog\BackendController','index']);
-    $r->addRoute('POST', '/admin', ['Ebog\BackendController','index']);
-    $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController','logout']);
-    $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController','edit']);
-    $r->addRoute('GET', '/admin/add', ['Ebog\BackendController','add']);
-    $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController','delete']);
-    $r->addRoute('POST', '/admin/update/{id}', ['Ebog\BackendController','update']);
-    $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController','save']);
+    $r->addRoute('GET', '/admin', ['Ebog\BackendController', 'index']);
+    $r->addRoute('POST', '/admin', ['Ebog\BackendController', 'index']);
+    $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController', 'logout']);
+    $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController', 'edit']);
+    $r->addRoute('GET', '/admin/add', ['Ebog\BackendController', 'add']);
+    $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController', 'delete']);
+    $r->addRoute('POST', '/admin/update/{id}', ['Ebog\BackendController', 'update']);
+    $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController', 'save']);
 });
 
 // Fetch method and URI from somewhere

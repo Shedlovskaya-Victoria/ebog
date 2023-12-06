@@ -41,10 +41,20 @@ return [
             PDO::ATTR_STRINGIFY_FETCHES=> false]);
     return $connectionOpis;
         },
+    'Connection' => create(Connection::class)
+        ->constructor(
+            $_ENV['DB_DSN'],
+            $_ENV['DB_USERNAME'],
+            $_ENV['DB_PASSWORD']
+        ),
+    'Database'=>create(Database::class)
+    ->constructor(
+        get('Connection')
+    ),
     'OpisDB'=>create(Database::class)
     ->constructor(get('OpisConnection')),
     'OpisModel'=>create(\Ebog\OpisModel::class)
-    ->constructor(get('OpisDB')),
+    ->constructor(get('Database')),
     'OpisFrontCntrl'=>create(\Ebog\OpisFrontendController::class)
     ->constructor(get('OpisModel')),
     'PDO'=>function(){

@@ -11,7 +11,7 @@ class OpisModel
     }
     public function getAll()
     {
-        $article = $this->db->from('Article')->select()->fetchBoth()->all();
+        $article = $this->db->from('article')->select()->fetchBoth()->all();
         return $article;
             /*
         foreach ($result as $res){
@@ -25,19 +25,19 @@ class OpisModel
     }
     public function getPaginationPage($limit, $art)
     {
-        $article = $this->db->from('Article')
+        $article = $this->db->from('article')
             ->limit($art)
             ->offset($limit)
-            ->select()->all();
+            ->select()->fetchBoth()->all();
         return $article;
     }
     public function countAllPages()
     {
-        return $this->db->from('Article')->count();
+        return $this->db->from('article')->count();
     }
     public function getArticleByID($id)
     {
-        $article = $this->db->from('Article')
+        $article = $this->db->from('article')
             ->where('id')
             ->atLeast($id)
             ->select()
@@ -92,9 +92,9 @@ class OpisModel
     }
     public function delete($id)
     {
-        $result = $this->db->from('Article')
+        $result = $this->db->from('article')
             ->where('id')->is($id)
-            ->delete(array('Article'));
+            ->delete(array('article'));
     }
     public function add()
     {
@@ -105,7 +105,7 @@ class OpisModel
                 'image' => $_POST['inputImage'],
                 'content' => $_POST['inputContent']
             ))
-                ->into('Article');
+                ->into('article');
         }
     }
 }
