@@ -1,0 +1,15 @@
+{% extends "detail-edit.twig" %}
+{% block edit %}
+    <form method="post" action="/admin/updateTag/{{ article.id }}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Title:</h5>
+                <input name="inputTitleTag" type="text" class="form-control" value="{{ article.title }}">
+            </div>
+        <div class="d-grid gap-2 mt-3" style="margin: 5px">
+            <input type="hidden" class="form-control" name="idEdit" value="'{{ article.id }}'">
+            <input name="btnOk" type="submit" class="btn btn-primary" value="Ok">
+        </div>
+        </div>
+    </form>
+{% endblock %}

@@ -93,15 +93,69 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-heading">Pages</li>
-
+        <li class="nav-heading">States</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Show state</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/add">
                 <i class="bi bi-file-earmark-plus"></i>
-                <span>Add</span>
+                <span>Add state</span>
             </a>
         </li><!-- End Profile Page Nav -->
+        <li class="nav-heading">Categories</li>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/showCategory">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Show category</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link collapsed" href="/admin/addCategory">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Add category</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+        <li class="nav-heading">Tags</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/showTag">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Show tag</span>
+            </a>
+            <a class="nav-link collapsed" href="/admin/addTag">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Add tag</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+        <li class="nav-heading">Users</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/showUser">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Show user</span>
+            </a>
+            <a class="nav-link collapsed" href="/admin/addUser">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Add user</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+        <li class="nav-heading">Role</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/showRole">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Show role</span>
+            </a>
+            <a class="nav-link collapsed" href="/admin/addRole">
+                <i class="bi bi-file-earmark-plus"></i>
+                <span>Add role</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
     </ul>
 
 </aside><!-- End Sidebar-->
@@ -135,16 +189,8 @@
 -->
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+
+
                             {% block tableDetail %}{% endblock %}
                             </tbody>
                         </table>

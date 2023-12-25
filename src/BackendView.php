@@ -31,7 +31,23 @@ class BackendView
     }
     public  function showEdit($article)
     {
-        echo  $this->twig->render('detail-edit.twig', ['article'=>$article]);
+        echo  $this->twig->render('article-detail-edit.twig', ['article'=>$article]);
     }
-
+    public  function  showReg(){
+        echo $this->twig->render('red.twig',[]);
+    }
+    public function  showCategory($articles){
+        echo $this->twig->render('category-table-detail.twig', ['articles'=>$articles]);
+    }
+    public  function showEditCategory($article)
+    {
+        echo  $this->twig->render('category-detail-edit.twig', ['article'=>$article]);
+    }
+    public function  showTag($articles){
+        echo $this->twig->render('tag-table-datail.twig', ['articles'=>$articles]);
+    }
+    public  function showEditTag($article)
+    {
+        echo  $this->twig->render('tag-detail-edit.twig', ['article'=>$article]);
+    }
 }

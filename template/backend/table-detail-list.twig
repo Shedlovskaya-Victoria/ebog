@@ -1,5 +1,17 @@
 {% extends "admin.twig" %}
 {% block tableDetail%}
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Category</th>
+        <th scope="col">Tags</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for article in articles  %}
 <tr>
     <th scope="row">{{ article.id }}</th>
@@ -8,5 +20,6 @@
     <td><a href="/admin/edit/{{ article.id }}" class="bi bi-vector-pen"></a></td>
     <td><a href="/admin/delete/{{ article.id }}" class="bi bi-trash"></a></td>
 </tr>
+
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends "admin.twig" %}
+{% block tableDetail%}
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for article in articles  %}
+        <tr>
+            <th scope="row">{{ article.id }}</th>
+            <td>{{ article.name }}</td>
+            <td>{{ article.username }}</td>
+            <td>{{ article.email }}</td>
+            <td>{{ article.passwordHash }}</td>
+            <td><a href="/admin/editUser/{{ article.id }}" class="bi bi-vector-pen"></a></td>
+            <td><a href="/admin/deleteUser/{{ article.id }}" class="bi bi-trash"></a></td>
+        </tr>
+    {% endfor %}
+{% endblock %}

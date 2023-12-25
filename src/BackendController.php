@@ -50,6 +50,30 @@ class BackendController
         }
         h::goUrl('/admin');
     }
+    public function updateCateg($id)
+    {
+        $arrs = $this->model->getAllCategory();
+        if($id!=0)
+        {
+            $this->model->updateCateg($id);
+        }
+        else{
+            $this->model->addCateg();
+        }
+        h::goUrl('/admin/showCategory');
+    }
+    public function updateTag($id)
+    {
+        $arrs = $this->model->getAllTag();
+        if($id!=0)
+        {
+            $this->model->updateTag($id);
+        }
+        else{
+            $this->model->addTag();
+        }
+        h::goUrl('/admin/showTag');
+    }
     public function delete($id)
     {
         $this->model->delete($id);
@@ -65,7 +89,16 @@ class BackendController
         */
         h::goUrl('/admin');
     }
-
+    public function deleteCateg($id)
+    {
+        $this->model->deleteCateg($id);
+        h::goUrl('/admin/showCategory');
+    }
+    public function deleteTag($id)
+    {
+        $this->model->deleteTag($id);
+        h::goUrl('/admin/showTag');
+    }
     public function auth()
     {
         if (!isset($_POST['btnLogin'])) {
@@ -125,6 +158,18 @@ class BackendController
             'content' => '');
         $this->view->showEdit($article);
     }
+    public  function addCateg()
+    {
+        $article = array('id' => 0,
+            'title' => '');
+        $this->view->showEditCategory($article);
+    }
+    public  function addTag()
+    {
+        $article = array('id' => 0,
+            'title' => '');
+        $this->view->showEditTag($article);
+    }
     public function save($id)
     {
         //$arrs = $this->model->getArticles();
@@ -134,5 +179,24 @@ class BackendController
 
         file_put_contents('asd.json', json_encode($arrs));
     }
+    public function reg(){
+        $this->view->showReg();
+    }
 
+    public  function  showCategory(){
+      $articles =  $this->model->getAllCategory();
+        $this->view->showCategory($articles);
+    }
+    public  function  showEditCategory($id){
+        $article =  $this->model->getByIdCategory($id);
+        $this->view->showEditCategory($article);
+    }
+    public  function  showTag(){
+        $articles = $this->model->getAllTag();
+        $this->view->showTag($articles);
+    }
+    public  function  showEditTag($id){
+        $article = $this->model->getByIdTag($id);
+        $this->view->showEditTag($article);
+    }
 }

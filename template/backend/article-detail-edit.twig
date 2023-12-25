@@ -1,0 +1,30 @@
+{% extends "detail-edit.twig" %}
+{% block edit %}
+    <form method="post" action="/admin/update/{{ article.id }}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Title:</h5>
+                <input name="inputTitle" type="text" class="form-control" value="{{ article.title }}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Image link:</h5>
+                <input name="inputImage" type="text" class="form-control" value="{{ article.image }}">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Content: </h5>
+                <!-- TinyMCE Editor -->
+                <textarea name="inputContent" class="tinymce-editor">
+                            {{article.content}}
+                        </textarea>
+                <!-- End TinyMCE Editor -->
+            </div>
+        </div>
+        <div class="d-grid gap-2 mt-3" style="margin: 5px">
+            <input type="hidden" class="form-control" name="idEdit" value="'{{ article.id }}'">
+            <input name="btnOk" type="submit" class="btn btn-primary" value="Ok">
+        </div>
+        </div>
+    </form>
+{% endblock %}

@@ -85,12 +85,29 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     /// admin panel routs
     $r->addRoute('GET', '/admin', ['Ebog\BackendController', 'index']);
     $r->addRoute('POST', '/admin', ['Ebog\BackendController', 'index']);
+    $r->addRoute('POST', '/admin/auth', ['Ebog\BackendController', 'auth']);
+    $r->addRoute('GET', '/admin/auth', ['Ebog\BackendController', 'auth']);
     $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController', 'logout']);
     $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController', 'edit']);
     $r->addRoute('GET', '/admin/add', ['Ebog\BackendController', 'add']);
     $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController', 'delete']);
     $r->addRoute('POST', '/admin/update/{id}', ['Ebog\BackendController', 'update']);
     $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController', 'save']);
+    $r->addRoute('GET', '/admin/reg', ['Ebog\BackendController', 'reg']);
+    $r->addRoute('GET', '/admin/showCategory', ['Ebog\BackendController', 'showCategory']);
+    $r->addRoute('GET', '/admin/showEditCategory/{id}', ['Ebog\BackendController', 'showEditCategory']);
+    $r->addRoute('GET', '/admin/showTag', ['Ebog\BackendController', 'showTag']);
+    $r->addRoute('GET', '/admin/showEditTag/{id}', ['Ebog\BackendController', 'showEditTag']);
+    $r->addRoute('POST', '/admin/updateCateg/{id}', ['Ebog\BackendController', 'updateCateg']);
+    $r->addRoute('POST', '/admin/updateTag/{id}', ['Ebog\BackendController', 'updateTag']);
+    $r->addRoute('GET', '/admin/addCategory', ['Ebog\BackendController', 'addCateg']);
+    $r->addRoute('GET', '/admin/addTag', ['Ebog\BackendController', 'addTag']);
+    $r->addRoute('GET', '/admin/editCateg/{id}', ['Ebog\BackendController', 'showEditCategory']);
+    $r->addRoute('GET', '/admin/editTag/{id}', ['Ebog\BackendController', 'showEditTag']);
+    $r->addRoute('GET', '/admin/deleteCateg/{id}', ['Ebog\BackendController', 'deleteCateg']);
+    $r->addRoute('GET', '/admin/deleteTag/{id}', ['Ebog\BackendController', 'deleteTag']);
+
+
 });
 
 // Fetch method and URI from somewhere

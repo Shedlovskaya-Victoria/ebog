@@ -1,0 +1,26 @@
+{% extends "detail-edit.twig" %}
+{% block edit %}
+    <form method="post" action="/admin/updateUser/{{ article.id }}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Name:</h5>
+                <input name="inputTitleTag" type="text" class="form-control" value="{{ article.name }}">
+            </div> <div class="card-body">
+                <h5 class="card-title">Username:</h5>
+                <input name="inputTitleTag" type="text" class="form-control" value="{{ article.uername }}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Email:</h5>
+                <input name="inputTitleTag" type="text" class="form-control" value="{{ article.email }}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">PasswordHash:</h5>
+                <input name="inputTitleTag" type="text" class="form-control" value="{{ article.passwordHash }}">
+            </div>
+            <div class="d-grid gap-2 mt-3" style="margin: 5px">
+                <input type="hidden" class="form-control" name="idEdit" value="'{{ article.id }}'">
+                <input name="btnOk" type="submit" class="btn btn-primary" value="Ok">
+            </div>
+        </div>
+    </form>
+{% endblock %}

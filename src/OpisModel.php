@@ -23,6 +23,15 @@ class OpisModel
         }
         */
     }
+    public  function  getAllCategory()
+    {
+        $article = $this->db->from('categories')->select()->fetchBoth()->all();
+        return $article;
+    }
+    public  function  getAllTag(){
+        $article = $this->db->from('tags')->select()->fetchBoth()->all();
+        return $article;
+    }
     public function getPaginationPage($limit, $art)
     {
         $article = $this->db->from('article')
@@ -49,6 +58,22 @@ class OpisModel
             'content' => $article['content'])
             // )
     );//echo $article['id'].'| '.$article['title'].'| '.$article['content'].'| <br/>';
+    }
+    public  function  getByIdTag($id){
+        $article = $this->db->from('tags')
+            ->where('id')
+            ->atLeast($id)
+            ->select()
+            ->fetchBoth()->first();
+        return $article;
+    }
+    public  function  getByIdCategory($id){
+        $article = $this->db->from('categories')
+            ->where('id')
+            ->atLeast($id)
+            ->select()
+            ->fetchBoth()->first();
+        return $article;
     }
 /*тестовый CRUD JohnDoe
     public function addJohnDoe()
@@ -107,5 +132,56 @@ class OpisModel
             ))
                 ->into('article');
         }
+    }
+    public function addCateg()
+    {
+        //add
+        if(isset($_POST['inputTitleCateg']) ) {
+            $result = $this->db->insert(array(
+                'title' => $_POST['inputTitleCateg']
+            ))
+                ->into('categories');
+        }
+    }
+    public function addTag()
+{
+    //add
+    if(isset($_POST['inputTitleTag']) ) {
+        $result = $this->db->insert(array(
+            'title' => $_POST['inputTitleTag']
+        ))
+            ->into('tags');
+    }
+}
+    public  function updateCateg($id)
+    {
+        if(isset($_POST['inputTitleCateg']) ) {
+            $result = $this->db->update('categories')
+                ->where('id')->is($id)
+                ->set(array(
+                    'title' => $_POST['inputTitleCateg']
+                ));
+        }
+    }public  function updateTag($id)
+{
+    if(isset($_POST['inputTitleTag']) ) {
+        $result = $this->db->update('tags')
+            ->where('id')->is($id)
+            ->set(array(
+                'title' => $_POST['inputTitleTag']
+            ));
+    }
+}
+    public function deleteCateg($id)
+    {
+        $this->db->from('categories')
+            ->where('id')->is($id)
+            ->delete(array('categories'));
+    }
+    public function deleteTag($id)
+    {
+        $result = $this->db->from('tags')
+            ->where('id')->is($id)
+            ->delete(array('tags'));
     }
 }
