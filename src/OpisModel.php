@@ -9,6 +9,7 @@ class OpisModel
     public function __construct($opisDatabase){
        $this->db = $opisDatabase;
     }
+
     public function getAll()
     {
         $article = $this->db->from('article')->select()->fetchBoth()->all();
@@ -184,4 +185,89 @@ class OpisModel
             ->where('id')->is($id)
             ->delete(array('tags'));
     }
+    //user
+    public  function  getAllUser(){
+        $article = $this->db->from('user')->select()->fetchBoth()->all();
+        return $article;
+    }
+    public  function  getByIdUser($id){
+        $article = $this->db->from('user')
+            ->where('id')
+            ->atLeast($id)
+            ->select()
+            ->fetchBoth()->first();
+        return $article;
+    }
+    public  function addUser($id)
+    {
+        if(isset($_POST['inputNameUser']) ) {
+            $result = $this->db->insert(array(
+                    'roleId' => $_POST['selectRoleIdUser'],
+                    'name' => $_POST['inputNameUser'],
+                    'email' => $_POST['inputEmailUser'],
+                    'username' => $_POST['inputUsernameUser'],
+                    'passwordHash' => $_POST['inputPasswordHashUser']
+                ))
+                ->into('user');
+        }
+    }
+public  function updateUser($id)
+{
+    if(isset($_POST['inputNameUser']) ) {
+        $result = $this->db->update('user')
+            ->where('id')->is($id)
+            ->set(array(
+                'roleId' => $_POST['selectRoleIdUser'],
+                'name' => $_POST['inputNameUser'],
+                'email' => $_POST['inputEmailUser'],
+                'username' => $_POST['inputUsernameUser'],
+                'passwordHash' => $_POST['inputPasswordHashUser']
+            ));
+    }
+}
+public function deleteUser($id)
+{
+    $this->db->from('user')
+        ->where('id')->is($id)
+        ->delete(array('user'));
+}
+
+//role
+public  function  getAllRole(){
+    $article = $this->db->from('role')->select()->fetchBoth()->all();
+    return $article;
+}
+public  function  getByIdRole($id){
+    $article = $this->db->from('role')
+        ->where('id')
+        ->atLeast($id)
+        ->select()
+        ->fetchBoth()->first();
+    return $article;
+}
+public  function addRole()
+{
+    if(isset($_POST['inputTitleRole']) ) {
+        $result = $this->db->insert(array(
+                'title' => $_POST['inputTitleRole']
+            ))
+            ->into('role');
+    }
+}
+public  function updateRole($id)
+{
+    if(isset($_POST['inputTitleRole']) ) {
+        $result = $this->db->update('role')
+            ->where('id')->is($id)
+            ->set(array(
+                'title' => $_POST['inputTitleRole']
+            ));
+    }
+}
+public function deleteRole($id)
+{
+    $this->db->from('role')
+        ->where('id')->is($id)
+        ->delete(array('role'));
+}
 }

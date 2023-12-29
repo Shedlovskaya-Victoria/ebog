@@ -7,6 +7,7 @@
         <th scope="col">UserName</th>
         <th scope="col">Email</th>
         <th scope="col">Password</th>
+        <th scope="col">Role</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -19,8 +20,22 @@
             <td>{{ article.username }}</td>
             <td>{{ article.email }}</td>
             <td>{{ article.passwordHash }}</td>
-            <td><a href="/admin/editUser/{{ article.id }}" class="bi bi-vector-pen"></a></td>
-            <td><a href="/admin/deleteUser/{{ article.id }}" class="bi bi-trash"></a></td>
+    {% endfor %}
+
+            {% macro recursiveCategory(articles) %}
+            {% if articles.children|length %}
+                <td>
+                    {% for child in articles.children %}
+                        {{ _self.recursiveCategory(child) }}
+                    {% endfor %}
+                </td>
+            {% endif %}
+            {% endmacro %}
+            <td>{{ article.passwordHash }}</td>
+    {% for article in articles  %}
+        <td><a href="/admin/editUser/{{ article.id }}" class="bi bi-vector-pen"></a></td>
+        <td><a href="/admin/deleteUser/{{ article.id }}" class="bi bi-trash"></a></td>
         </tr>
     {% endfor %}
+
 {% endblock %}

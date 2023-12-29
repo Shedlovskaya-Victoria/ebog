@@ -50,4 +50,22 @@ class BackendView
     {
         echo  $this->twig->render('tag-detail-edit.twig', ['article'=>$article]);
     }
+    public function showUser($articles)
+    {
+        echo $this->twig->render('user-table-detail.twig', ['articles'=>$articles]);
+
+    }
+    public  function showEditUser($article = null, $roles = null)
+    {
+        echo  $this->twig->render('user-detail-edit.twig', ['article'=>$article, 'roles'=>$roles]);
+    }
+    public function showRole($articles)
+    {
+        echo $this->twig->render('role-table-detail.twig', ['articles'=>$articles]);
+
+    }
+    public  function showEditRole($article)
+    {
+        echo  $this->twig->render('role-detail-edit.twig', ['article'=>$article]);
+    }
 }

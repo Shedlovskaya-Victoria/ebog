@@ -88,25 +88,41 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('POST', '/admin/auth', ['Ebog\BackendController', 'auth']);
     $r->addRoute('GET', '/admin/auth', ['Ebog\BackendController', 'auth']);
     $r->addRoute('GET', '/admin/logout', ['Ebog\BackendController', 'logout']);
+    //articles
     $r->addRoute('GET', '/admin/edit/{id}', ['Ebog\BackendController', 'edit']);
     $r->addRoute('GET', '/admin/add', ['Ebog\BackendController', 'add']);
     $r->addRoute('GET', '/admin/delete/{id}', ['Ebog\BackendController', 'delete']);
     $r->addRoute('POST', '/admin/update/{id}', ['Ebog\BackendController', 'update']);
     $r->addRoute('GET', '/admin/save/{id}', ['Ebog\BackendController', 'save']);
+    //register                                      don't work ???
     $r->addRoute('GET', '/admin/reg', ['Ebog\BackendController', 'reg']);
+    //category
     $r->addRoute('GET', '/admin/showCategory', ['Ebog\BackendController', 'showCategory']);
     $r->addRoute('GET', '/admin/showEditCategory/{id}', ['Ebog\BackendController', 'showEditCategory']);
+    $r->addRoute('POST', '/admin/updateCateg/{id}', ['Ebog\BackendController', 'updateCateg']);
+    $r->addRoute('GET', '/admin/addCategory', ['Ebog\BackendController', 'addCateg']);
+    $r->addRoute('GET', '/admin/editCateg/{id}', ['Ebog\BackendController', 'showEditCategory']);
+    $r->addRoute('GET', '/admin/deleteCateg/{id}', ['Ebog\BackendController', 'deleteCateg']);
+
+    //tag
     $r->addRoute('GET', '/admin/showTag', ['Ebog\BackendController', 'showTag']);
     $r->addRoute('GET', '/admin/showEditTag/{id}', ['Ebog\BackendController', 'showEditTag']);
-    $r->addRoute('POST', '/admin/updateCateg/{id}', ['Ebog\BackendController', 'updateCateg']);
     $r->addRoute('POST', '/admin/updateTag/{id}', ['Ebog\BackendController', 'updateTag']);
-    $r->addRoute('GET', '/admin/addCategory', ['Ebog\BackendController', 'addCateg']);
     $r->addRoute('GET', '/admin/addTag', ['Ebog\BackendController', 'addTag']);
-    $r->addRoute('GET', '/admin/editCateg/{id}', ['Ebog\BackendController', 'showEditCategory']);
     $r->addRoute('GET', '/admin/editTag/{id}', ['Ebog\BackendController', 'showEditTag']);
-    $r->addRoute('GET', '/admin/deleteCateg/{id}', ['Ebog\BackendController', 'deleteCateg']);
     $r->addRoute('GET', '/admin/deleteTag/{id}', ['Ebog\BackendController', 'deleteTag']);
-
+    //user
+    $r->addRoute('GET', '/admin/showUser', ['Ebog\BackendController', 'showUser']);
+    $r->addRoute('GET', '/admin/showEditUser/{id}', ['Ebog\BackendController', 'showEditUesr']);
+    $r->addRoute('GET', '/admin/addUser', ['Ebog\BackendController', 'addUser']);
+    $r->addRoute('POST', '/admin/updateUser/{id}', ['Ebog\BackendController', 'updateUser']);
+    $r->addRoute('GET', '/admin/deleteUser/{id}', ['Ebog\BackendController', 'deleteUser']);
+    //role
+    $r->addRoute('GET', '/admin/showRole', ['Ebog\BackendController', 'showRole']);
+    $r->addRoute('GET', '/admin/showEditRole/{id}', ['Ebog\BackendController', 'showEditRole']);
+    $r->addRoute('GET', '/admin/addRole', ['Ebog\BackendController', 'addRole']);
+    $r->addRoute('POST', '/admin/updateRole/{id}', ['Ebog\BackendController', 'updateRole']);
+    $r->addRoute('GET', '/admin/deleteRole/{id}', ['Ebog\BackendController', 'deleteRole']);
 
 });
 

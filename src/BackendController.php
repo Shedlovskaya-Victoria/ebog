@@ -199,4 +199,73 @@ class BackendController
         $article = $this->model->getByIdTag($id);
         $this->view->showEditTag($article);
     }
+    //user
+    public  function  showUser(){
+        $articles = $this->model->getAllUser();
+        $this->view->showUser($articles);
+    }
+    public  function  showEditUser($id){
+        $article = $this->model->getByIdUser($id);
+        $roles = $this->model->getAllRole();
+        $this->view->showEditUser($article, $roles);
+    }
+    public  function addUser()
+    {
+        $article = array('id' => 0,
+            'roleId' => '',
+            'name' => '',
+            'email' =>'',
+            'username' => '',
+            'passwordHash' => '');
+        $this->view->showEditUser($article);
+    }
+    public function updateUser($id)
+    {
+        $arrs = $this->model->getAllUser();
+        if($id!=0)
+        {
+            $this->model->updateUser($id);
+        }
+        else{
+            $this->model->addUser();
+        }
+        h::goUrl('/admin/showUser');
+    }
+    public function deleteUser($id)
+    {
+        $this->model->deleteUser($id);
+        h::goUrl('/admin/showUser');
+    }
+    //role
+    public  function  showRole(){
+        $articles = $this->model->getAllRole();
+        $this->view->showRole($articles);
+    }
+    public  function  showEditRole($id){
+        $article = $this->model->getByIdRole($id);
+        $this->view->showEditRole($article);
+    }
+    public  function addRole()
+    {
+        $article = array('id' => 0,
+            'title' => '',);
+        $this->view->showEditRole($article);
+    }
+    public function updateRole($id)
+    {
+        $arrs = $this->model->getAllRole();
+        if($id!=0)
+        {
+            $this->model->updateRole($id);
+        }
+        else{
+            $this->model->addRole();
+        }
+        h::goUrl('/admin/showRole');
+    }
+    public function deleteRole($id)
+    {
+        $this->model->deleteRole($id);
+        h::goUrl('/admin/showRole');
+    }
 }
